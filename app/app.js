@@ -1,16 +1,17 @@
 const express = require('express');
 const cors = require('cors')
+const userRouter = require('../router/userRouter')
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
 
-
-
 app.use(cors());
 app.get('/', (req, res, next) => {
     res.status(200).json({message: "Server is up and running"})
 });
+
+app.use('/user', userRouter)
 
 
 
